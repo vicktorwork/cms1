@@ -1,0 +1,198 @@
+/*redtone*/
+.style10.dt_newsslider{ 
+	position:relative; 
+	min-height:200px;
+	background: #fff;
+	margin-bottom: 15px;
+	border: 8px solid #f8f7f7;
+	border-radius:6px;
+	font-family: Arial;
+}
+
+.style10.dt_newsslider:before,
+.style10.dt_newsslider:after {
+    content:"";
+	bottom:0px;
+	height:15px;
+	left:2%;
+	width:96%;
+    position:absolute;
+    z-index:-2;
+    box-shadow: 0 15px 10px rgba(0, 0, 0, 0.3);
+}
+ 
+
+.style10.dt_newsslider .dt_newsslider_list{
+	float: right;
+	padding:0; 
+	margin:0 -8px 0 0;
+	width:44%;
+	z-index:2;
+	position:relative;
+	background: #f8f7f7;
+	border-left: 8px solid #f8f7f7;
+	-moz-user-select: none;
+	-khtml-user-select: none;
+	user-select: none; 
+}
+
+.style10.dt_newsslider .dt_newsslider_list .dt_newsslider_list_item{ 
+	margin:0;
+	padding:0;
+	height:70px;
+	overflow: hidden;
+	display: block;
+}
+
+.style10.dt_newsslider .dt_newsslider_list .dt_newsslider_list_itembg{ 
+	display:block; 
+	height:68px; 
+	line-height:15px;
+	text-decoration: none;
+	cursor: pointer;
+	border-top: 1px solid #fff;
+	border-bottom: 1px solid #d9e2e8;
+	background: url('../../images/style10/gr5.png') repeat 0 0;
+}
+
+
+.style10.dt_newsslider .dt_newsslider_list .dt_newsslider_list_itembg:hover{
+	background: url('../../images/style10/r20.png') repeat 0 0;
+	color: #444;
+}
+
+.style10.dt_newsslider .dt_newsslider_list .dt_newsslider_list_item.active{
+	background: url('../../images/style10/list.png') repeat-x 0 0;
+	cursor: pointer;
+}
+
+.style10.dt_newsslider .dt_newsslider_list .dt_newsslider_list_item.active div{
+	background: transparent !important;
+	color: #fff;
+}
+
+.style10.dt_newsslider .dt_newsslider_list span.dt_newsslider_list_img{
+	float: left;
+	overflow: hidden;
+	width: 50px;
+	height:50px;
+	display:block;
+	margin:7px;
+	background: #999;
+	border: 2px solid #f42b2b;
+	border-radius: 2px;
+}
+
+.style10.dt_newsslider .dt_newsslider_list .active span.dt_newsslider_list_img{
+	border: 2px solid #fff;
+	box-shadow: 0 0 2px rgba(0,0,0,0.3);
+}
+
+.style10.dt_newsslider .dt_newsslider_list img{
+	height: 50px;
+}
+
+.style10.dt_newsslider .dt_newsslider_list span.dt_newsslider_list_title{ 
+	font-size:14px; 
+	line-height:16px; 
+	padding: 5px 15px 1px 0px;
+	display: block;
+	color: #f42b2b;
+	font-weight: bold;
+}
+
+.style10.dt_newsslider .dt_newsslider_list .active span.dt_newsslider_list_title{
+	color: #fff;
+}
+
+.style10.dt_newsslider .dt_newsslider_list span.dt_newsslider_list_desc{ 
+	font-size:11px; 
+	line-height:14px; 
+	padding: 0 15px 0 0;
+	display: block;
+	max-height: 34px;
+	overflow: hidden;
+	word-wrap: break-word;
+	color: #333;
+}
+
+.style10.dt_newsslider .dt_newsslider_list .active span.dt_newsslider_list_desc{
+	color: #fff;
+}
+
+.style10.dt_newsslider .dt_newsslider_slide{ 
+	height:100%;
+	position:absolute;
+	bottom:0;
+	top:0;
+	width:100%;
+	overflow: hidden;
+}
+
+.style10.dt_newsslider .dt_newsslider_slide_img{
+	display: block;
+	background: #fff;
+}
+
+.style10.dt_newsslider .dt_newsslider_slide_img img{
+	width:100%;
+	min-height: 100%;
+	border:0;
+	margin:0;
+	padding:0;
+}
+
+.style10.dt_newsslider .dt_newsslider_slide_info{
+	position:absolute; 
+	width: 100%;
+	left:0; 
+	bottom:0;
+	opacity: 1;
+	padding: 0px;
+	background: url('../../images/style10/gr10.png') repeat 0 0 #f42b2b;
+}
+
+.style10.dt_newsslider .dt_newsslider_slide_title{ 
+	font-size:17px; 
+	padding:8px 8px 0; 
+	margin:0;
+	line-height: 20px;
+	overflow:hidden; 
+	color:#fff;
+	font-weight: bold;
+	word-wrap: break-word;
+	display: block;
+}
+
+.style10.dt_newsslider .dt_newsslider_slide_desc{ 
+	margin:0; 
+	padding: 8px;
+	font-size:13px; 
+	line-height:15px; 
+	color:#eee;
+	word-wrap: break-word;
+	display: block;
+}
+
+.style10.dt_newsslider .dt_newsslider_slide_more{
+	text-decoration:none;
+	display: inline-block;
+	font-size: 20px;
+	color:#151515;
+	margin: 0 5px 5px;
+	height:20px;
+	line-height:20px;
+	padding:5px;
+	text-indent: 0px;
+	background: url('../../images/style10/gr20.png') repeat 0 0  #fff;
+	border-left: 2px solid #e28888;
+	transition: border-left 0.3s ease-out;
+}
+
+.style10.dt_newsslider .dt_newsslider_slide_more:hover{
+	color: #f42b2b;
+	border-left: 20px solid #e28888;
+	transition: border-left 0.3s ease-out;
+}
+
+.style10.dt_newsslider .clear{clear: both;}

@@ -1,0 +1,193 @@
+/*greenpress*/
+.style12.dt_newsslider{ 
+	position:relative; 
+	min-height:250px;
+	background: #fff;
+	margin-bottom: 15px;
+	font-family: Arial;
+}
+
+.style12.dt_newsslider .dt_newsslider_list .dt_newsslider_list_item{ 
+	float: left;
+	width:20%;
+	margin:0;
+	padding:0;
+	height:200px;
+	display: block;
+}
+
+.style12.dt_newsslider .dt_newsslider_list .dt_newsslider_list_itembg{ 
+	display:block; 
+	height:200px; 
+	line-height:15px;
+	text-decoration: none;
+	cursor: pointer;
+	overflow: hidden;
+	background: url('../../images/style12/b10.png') repeat-y 0 0;
+}
+
+
+.style12.dt_newsslider .dt_newsslider_list .dt_newsslider_list_itembg:hover{
+	background: #e2e2e2;
+	color: #444;
+}
+
+.style12.dt_newsslider .dt_newsslider_list .dt_newsslider_list_item.active{
+	background: url('../../images/style12/list.png') repeat-x 0 0 #798b18;
+	text-shadow: 1px 1px 0px rgba(0,0,0,0.4);
+	cursor: pointer;
+}
+
+.style12.dt_newsslider .dt_newsslider_list .dt_newsslider_list_item.active div{
+	background: transparent !important;
+	color: #fff;
+}
+
+.style12.dt_newsslider .dt_newsslider_list span.dt_newsslider_list_img{
+	overflow: hidden;
+	width: 80%;
+	height:70px;
+	display:block;
+	margin:10px auto 5px;
+	background: #999;
+	border: 2px solid #bbb;
+	border-radius: 2px;
+}
+
+.style12.dt_newsslider .dt_newsslider_list .active span.dt_newsslider_list_img{
+	border: 2px solid #748617;
+}
+
+.style12.dt_newsslider .dt_newsslider_list{
+	position: absolute;
+	bottom:0;
+	padding:0; 
+	margin:0;
+	background: #eee;
+	-moz-user-select: none;
+	-khtml-user-select: none;
+	user-select: none; 
+	clear: both;
+	overflow: hidden;
+}
+
+.style12.dt_newsslider .dt_newsslider_list img{
+	min-height: 70px;
+	min-width:100%;
+}
+
+.style12.dt_newsslider .dt_newsslider_list span.dt_newsslider_list_title{ 
+	font-size:13px; 
+	line-height:16px; 
+	padding: 5px 15px 1px;
+	display: block;
+	color: #798b18;
+	font-weight: bold;
+	word-wrap: break-word;
+}
+
+.style12.dt_newsslider .dt_newsslider_list .active span.dt_newsslider_list_title{
+	color: #fff;
+}
+
+.style12.dt_newsslider .dt_newsslider_list span.dt_newsslider_list_desc{ 
+	font-size:11px; 
+	line-height:14px; 
+	padding: 0 15px 0;
+	display: block;
+	clear:both;
+	max-height: 62px;
+	overflow: hidden;
+	word-wrap: break-word;
+	color: #333;
+}
+
+.style12.dt_newsslider .dt_newsslider_list .active span.dt_newsslider_list_desc{
+	color: #fff;
+}
+
+.style12.dt_newsslider .dt_newsslider_slide{ 
+	position:relative;
+	width:100%;
+	overflow: hidden;
+	display: none;
+}
+
+.style12.dt_newsslider .dt_newsslider_slide:first-child{
+	display: block;
+} 
+
+.style12.dt_newsslider .dt_newsslider_slide_img{
+	display: block;
+	background: #fff;
+}
+
+.style12.dt_newsslider .dt_newsslider_slide_img img{
+	border:0;
+	margin:0;
+	padding:0;
+	width:100%;
+}
+
+.style12.dt_newsslider .dt_newsslider_slide_info{
+	position:absolute; 
+	width: 30%;
+	right:-1000px; 
+	bottom:0;
+	top:0;
+	opacity: 1;
+	padding: 0px;
+	background: #798b18;
+	opacity:.9;
+}
+.style12.dt_newsslider .dt_newsslider_slide_info:hover{
+	opacity:1;
+}
+
+.style12.dt_newsslider .dt_newsslider_slide_title{ 
+	font-size:18px; 
+	padding:8px; 
+	margin:0;
+	line-height: 22px;
+	overflow:hidden; 
+	color:#fff;
+	font-weight: bold;
+	word-wrap: break-word;
+	display: block;
+	text-shadow: 1px 1px 0px rgba(0,0,0,0.4);
+	background: url('../../images/style12/w10.png') repeat 0 0;
+
+}
+
+.style12.dt_newsslider .dt_newsslider_slide_desc{ 
+	margin:0; 
+	padding: 8px;
+	font-size:15px; 
+	line-height:18px; 
+	color:#eee;
+	word-wrap: break-word;
+	display: block;
+}
+
+.style12.dt_newsslider .dt_newsslider_slide_more{
+	text-decoration:none;
+	display: inline-block;
+	font-size: 20px;
+	color:#151515;
+	margin: 0 5px 5px;
+	height:20px;
+	line-height:20px;
+	padding:5px;
+	text-indent: 0px;
+	background: #fff;
+	border-left: 2px solid #c2d26e;
+	transition: border-left 0.3s ease-out;
+}
+
+.style12.dt_newsslider .dt_newsslider_slide_more:hover{
+	color: #798b18;
+	border-left: 20px solid #c2d26e;
+	transition: border-left 0.3s ease-out;
+}
+
+.style12.dt_newsslider .clear{clear: both;}

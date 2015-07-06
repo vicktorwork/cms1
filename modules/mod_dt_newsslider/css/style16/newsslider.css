@@ -1,0 +1,96 @@
+/*newsweb*/
+.style16.dt_newsslider{ 
+	position:relative; 
+	min-height:250px;
+	background: #fff;
+	font-family: Arial;
+	overflow: hidden;
+	border-radius: 2px;
+}
+
+.style16.dt_newsslider .dt_newsslider_slide{ 
+	position:relative;
+	width:100%;
+	overflow: hidden;
+}
+
+.style16.dt_newsslider .dt_newsslider_slide_img{
+	display: block;
+	background: #fff;
+}
+
+.style16.dt_newsslider .dt_newsslider_slide_img img{
+	border:0;
+	margin:0;
+	padding:0;
+	width:100%;
+}
+
+.style16.dt_newsslider .dt_newsslider_slide_info{
+	position:absolute; 
+	bottom:0;
+	left:0;
+	right:0;
+	padding: 0px;
+	background: #f2f2f2;
+	box-shadow: 0 -2px 2px rgba(0,0,0,0.3);
+}
+
+.style16.dt_newsslider .dt_newsslider_slide_title{ 
+	font-size:17px; 
+	padding:10px; 
+	margin:0;
+	line-height: 20px;
+	overflow:hidden; 
+	color:#444;
+	font-weight: bold;
+	word-wrap: break-word;
+	display: block;
+}
+
+.style16.dt_newsslider .dt_newsslider_slide_desc{ 
+	margin:0; 
+	padding: 0 10px;
+	font-size:13px; 
+	line-height:16px; 
+	color:#777;
+	word-wrap: break-word;
+	display: block;
+}
+
+.style16.dt_newsslider .dt_newsslider_slide_more{
+	text-decoration:none;
+	display: inline-block;
+	font-size: 15px;
+	color:#fff;
+	float: right;
+	margin: 0;
+	height:16px;
+	line-height:16px;
+	padding:5px;
+	background: #bbb;
+	border-radius: 2px 0 2px 0;
+	box-shadow: inset 1px 1px 2px rgba(0,0,0,0.1); 
+}
+
+.style16.dt_newsslider .dt_newsslider_slide_more:hover{
+	color: #fff;
+	background: #444;
+}
+
+.style16.dt_newsslider .dt_newsslider_control{
+	position: absolute;
+	z-index:1;
+	top:10px;
+	height:30px;
+	width: 30px;
+	cursor: pointer;
+	border-radius:2px;
+}
+
+.style16.dt_newsslider .dt_newsslider_next{right:10px;background: url('../../images/style16/control.png') no-repeat 0 0;}
+.style16.dt_newsslider .dt_newsslider_next:hover{background: url('../../images/style16/control.png') no-repeat -30px 0;}
+.style16.dt_newsslider .dt_newsslider_prev{right:41px;background: url('../../images/style16/control.png') no-repeat 0 -30px;}
+.style16.dt_newsslider .dt_newsslider_prev:hover{background: url('../../images/style16/control.png') no-repeat -30px -30px;}
+
+.style16.dt_newsslider .clear{clear: both;}
