@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.28, created on 2015-07-06 11:56:35
+<?php /* Smarty version 2.6.28, created on 2015-02-23 15:12:17
          compiled from mod_dt_newsslider.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'escape', 'mod_dt_newsslider.tpl', 1, false),array('modifier', 'truncate', 'mod_dt_newsslider.tpl', 1, false),array('modifier', 'strip_tags', 'mod_dt_newsslider.tpl', 1, false),)), $this); ?>
@@ -36,11 +36,11 @@ _<?php echo $this->_tpl_vars['sid']; ?>
 /<?php if ($this->_tpl_vars['cfg']['substyle'] && $this->_tpl_vars['cfg']['style'] == 1): ?>sb<?php echo $this->_tpl_vars['cfg']['substyle']; ?>
 /<?php endif; ?>noimage_b.png" alt="<?php echo ((is_array($_tmp=$this->_tpl_vars['list_item']['title'])) ? $this->_run_mod_handler('escape', true, $_tmp, 'html') : smarty_modifier_escape($_tmp, 'html')); ?>
 " />			<?php endif; ?>		</div>		<?php if (! $this->_tpl_vars['cfg']['noshadow'] && $this->_tpl_vars['cfg']['style'] == 4): ?>			<div class="dt_newsslider_nb2shadow"></div>		<?php endif; ?>		<div class="dt_newsslider_slide_info">			<span class="dt_newsslider_slide_title"><?php echo ((is_array($_tmp=((is_array($_tmp=$this->_tpl_vars['slide']['title'])) ? $this->_run_mod_handler('strip_tags', true, $_tmp) : smarty_modifier_strip_tags($_tmp)))) ? $this->_run_mod_handler('truncate', true, $_tmp, $this->_tpl_vars['cfg']['ctitle']) : smarty_modifier_truncate($_tmp, $this->_tpl_vars['cfg']['ctitle'])); ?>
-</span>			<p class="dt_newsslider_slide_desc"><?php if ($this->_tpl_vars['cfg']['anons']): ?><?php echo ((is_array($_tmp=((is_array($_tmp=$this->_tpl_vars['slide']['content'])) ? $this->_run_mod_handler('strip_tags', true, $_tmp) : smarty_modifier_strip_tags($_tmp)))) ? $this->_run_mod_handler('truncate', true, $_tmp, $this->_tpl_vars['cfg']['cdesc']) : smarty_modifier_truncate($_tmp, $this->_tpl_vars['cfg']['cdesc'])); ?>
+</span>			<div class="dt_newsslider_slide_content">				<p class="dt_newsslider_slide_desc"><?php if ($this->_tpl_vars['cfg']['anons']): ?><?php echo ((is_array($_tmp=((is_array($_tmp=$this->_tpl_vars['slide']['content'])) ? $this->_run_mod_handler('strip_tags', true, $_tmp) : smarty_modifier_strip_tags($_tmp)))) ? $this->_run_mod_handler('truncate', true, $_tmp, $this->_tpl_vars['cfg']['cdesc']) : smarty_modifier_truncate($_tmp, $this->_tpl_vars['cfg']['cdesc'])); ?>
 <?php else: ?><?php echo ((is_array($_tmp=((is_array($_tmp=$this->_tpl_vars['slide']['description'])) ? $this->_run_mod_handler('strip_tags', true, $_tmp) : smarty_modifier_strip_tags($_tmp)))) ? $this->_run_mod_handler('truncate', true, $_tmp, $this->_tpl_vars['cfg']['cdesc']) : smarty_modifier_truncate($_tmp, $this->_tpl_vars['cfg']['cdesc'])); ?>
-<?php endif; ?></p>			<a class="dt_newsslider_slide_more" href="<?php echo $this->_tpl_vars['slide']['url']; ?>
+<?php endif; ?></p>				<a class="dt_newsslider_slide_more" href="<?php echo $this->_tpl_vars['slide']['url']; ?>
 " ><?php echo $this->_tpl_vars['LANG']['DTNEWSSLIDER_MORE']; ?>
-</a>		</div>	</div>	<?php endforeach; endif; unset($_from); ?>	<div class="clear"></div></div><?php if ($this->_tpl_vars['cfg']['style'] < 15): ?>	<?php echo '		<script type=text/javascript>			(function ($) {			var speed'; ?>
+</a>			</div>		</div>	</div>	<?php endforeach; endif; unset($_from); ?>	<div class="clear"></div></div><?php if ($this->_tpl_vars['cfg']['style'] < 15): ?>	<?php echo '		<script type=text/javascript>			(function ($) {			var speed'; ?>
 <?php echo $this->_tpl_vars['module_id']; ?>
 <?php echo ' = '; ?>
 <?php echo $this->_tpl_vars['cfg']['speed']; ?>
@@ -127,7 +127,13 @@ _<?php echo $this->_tpl_vars['sid']; ?>
 <?php echo $this->_tpl_vars['module_id']; ?>
 <?php echo ' .dt_newsslider_slide\').eq(slideNum'; ?>
 <?php echo $this->_tpl_vars['module_id']; ?>
-<?php echo ').stop(true, true);						}						'; ?>
+<?php echo ').stop(true, true);						}													$(\'#slider-dots .dot.current_dot\').removeClass(\'current_dot\');						if(slideNum'; ?>
+<?php echo $this->_tpl_vars['module_id']; ?>
+<?php echo ' == (slideCount'; ?>
+<?php echo $this->_tpl_vars['module_id']; ?>
+<?php echo '-1)){							$(\'#slider-dots .slider-dot-0\').addClass(\'current_dot\');						}						else{							var slide_dot_num = slideNum'; ?>
+<?php echo $this->_tpl_vars['module_id']; ?>
+<?php echo '+1;							$(\'#slider-dots .slider-dot-\'+slide_dot_num).addClass(\'current_dot\');						}													'; ?>
 <?php if ($this->_tpl_vars['cfg']['style'] < 5): ?><?php echo '						$(\'#dt_newsslider'; ?>
 <?php echo $this->_tpl_vars['module_id']; ?>
 <?php echo ' .dt_newsslider_slide\').eq(slideNum'; ?>

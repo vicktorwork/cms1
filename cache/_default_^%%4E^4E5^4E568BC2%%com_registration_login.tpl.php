@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.28, created on 2015-02-11 20:21:22
+<?php /* Smarty version 2.6.28, created on 2015-02-24 09:34:01
          compiled from com_registration_login.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'csrf_token', 'com_registration_login.tpl', 11, false),array('function', 'captcha', 'com_registration_login.tpl', 23, false),)), $this); ?>

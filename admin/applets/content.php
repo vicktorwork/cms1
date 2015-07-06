@@ -203,15 +203,20 @@ function applet_content(){
 			} else {
 				cmsCore::clearAccess($id, 'material');
             }
-
-
-            $file = 'article'.$id.'.jpg';
-
+			
+			if(isset($_SESSION['lang']) && $_SESSION['lang'] != 'ru') {
+				$file = 'article'.$id.'_'.$_SESSION['lang'].'.jpg';
+			}
+			else{
+				$file = 'article'.$id.'.jpg';
+			}
+			//$file = 'article'.$id.'.jpg';
+			
             if (cmsCore::request('delete_image', 'int', 0)){
                 @unlink(PATH."/images/photos/small/$file");
                 @unlink(PATH."/images/photos/medium/$file");
             } else {
-
+			
 				// Загружаем класс загрузки фото
 				cmsCore::loadClass('upload_photo');
 				$inUploadPhoto = cmsUploadPhoto::getInstance();
@@ -225,7 +230,7 @@ function applet_content(){
 				$inUploadPhoto->filename      = $file;
 				// Процесс загрузки фото
 				$inUploadPhoto->uploadPhoto();
-
+			
             }
 			cmsCore::addSessionMessage($_LANG['AD_ARTICLE_SAVE'], 'success');
 
@@ -561,10 +566,21 @@ function applet_content(){
                     <div style="margin-bottom:10px">
                         <?php
                             if ($do=='edit'){
-                                if (file_exists(PATH.'/images/photos/small/article'.$mod['id'].'.jpg')){
+								if(isset($_SESSION['lang']) && $_SESSION['lang'] != 'ru') {
+									$mod_id = $mod['id'] . '_' . $_SESSION['lang'];
+									$id_art = $mod['id'] . '_' . $_SESSION['lang'];
+								}
+								else{
+									$mod_id = $mod['id'];
+									$id_art = $id;
+								}
+								
+                                //if (file_exists(PATH.'/images/photos/small/article'.$mod['id'].'.jpg')){
+                                if (file_exists(PATH.'/images/photos/small/article'.$mod_id.'.jpg')){
                         ?>
                         <div style="margin-top:3px;margin-bottom:3px;padding:10px;border:solid 1px gray;text-align:center">
-                            <img src="/images/photos/small/article<?php echo $id; ?>.jpg" border="0" />
+                            <?/*php<img src="/images/photos/small/article<?php echo $id; ?>.jpg" border="0" />*/?>
+                            <img src="/images/photos/small/article<?php echo $id_art; ?>.jpg" border="0" />
                         </div>
                         <table cellpadding="0" cellspacing="0" border="0">
                             <tr>

@@ -1,8 +1,11 @@
-<?php /* Smarty version 2.6.28, created on 2015-03-13 20:15:42
+<?php /* Smarty version 2.6.28, created on 2015-02-23 15:14:36
          compiled from com_photos_view.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'template', 'com_photos_view.tpl', 5, false),array('function', 'math', 'com_photos_view.tpl', 60, false),array('modifier', 'nl2br', 'com_photos_view.tpl', 42, false),array('modifier', 'escape', 'com_photos_view.tpl', 50, false),array('modifier', 'truncate', 'com_photos_view.tpl', 83, false),array('modifier', 'spellcount', 'com_photos_view.tpl', 90, false),)), $this); ?>
-<?php if ($this->_tpl_vars['album']['id'] == $this->_tpl_vars['root_album_id'] && $this->_tpl_vars['cfg']['showlat']): ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'template', 'com_photos_view.tpl', 7, false),array('function', 'math', 'com_photos_view.tpl', 61, false),array('modifier', 'nl2br', 'com_photos_view.tpl', 43, false),array('modifier', 'escape', 'com_photos_view.tpl', 51, false),array('modifier', 'truncate', 'com_photos_view.tpl', 55, false),array('modifier', 'spellcount', 'com_photos_view.tpl', 91, false),)), $this); ?>
+
+<h1 class="con_heading"><?php echo $this->_tpl_vars['album']['title']; ?>
+</h1><?php if ($this->_tpl_vars['album']['id'] == $this->_tpl_vars['root_album_id'] && $this->_tpl_vars['cfg']['showlat']): ?>
+
 <div class="float_bar">
     <table cellspacing="0" cellpadding="0">
       <tr>
@@ -54,9 +57,6 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'template', 
 </a></div>
 <?php endif; ?>
 
-<h1 class="con_heading"><?php echo $this->_tpl_vars['album']['title']; ?>
- <?php if ($this->_tpl_vars['total']): ?>(<?php echo $this->_tpl_vars['total']; ?>
-)<?php endif; ?></h1>
 
 <div class="clear"></div>
 <?php if ($this->_tpl_vars['album']['description']): ?>
@@ -72,7 +72,7 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'template', 
             <div class="photo_album_tumb">
                 <div class="photo_container">
                     <a href="/photos/<?php echo $this->_tpl_vars['cat']['id']; ?>
-"><img class="photo_album_img" src="/images/photos/small/<?php echo $this->_tpl_vars['cat']['file']; ?>
+"><img class="photo_album_img" src="/images/photos/medium/<?php echo $this->_tpl_vars['cat']['file']; ?>
 " alt="<?php echo ((is_array($_tmp=$this->_tpl_vars['cat']['title'])) ? $this->_run_mod_handler('escape', true, $_tmp, 'html') : smarty_modifier_escape($_tmp, 'html')); ?>
 " width="<?php echo $this->_tpl_vars['cat']['thumb1']; ?>
 px" /></a>
@@ -80,9 +80,8 @@ px" /></a>
                 <div class="photo_txt">
                     <ul>
                         <li class="photo_album_title"><a href="/photos/<?php echo $this->_tpl_vars['cat']['id']; ?>
-"><?php echo $this->_tpl_vars['cat']['title']; ?>
-</a> (<?php echo $this->_tpl_vars['cat']['content_count']; ?>
-)</li>
+"><?php echo ((is_array($_tmp=$this->_tpl_vars['cat']['title'])) ? $this->_run_mod_handler('truncate', true, $_tmp, 20) : smarty_modifier_truncate($_tmp, 20)); ?>
+</a></li>
                         <?php if ($this->_tpl_vars['cat']['description']): ?><li><?php echo $this->_tpl_vars['cat']['description']; ?>
 </li><?php endif; ?>
                     </ul>
@@ -101,7 +100,7 @@ px" /></a>
 <?php if ($this->_tpl_vars['photos']): ?>
 <?php $this->assign('col', '1'); ?>
 <div class="photo_gallery">
-    <table cellpadding="0" cellspacing="0">
+    <table cellpadding="0" cellspacing="0" style="margin: 0 auto;">
     <?php $_from = $this->_tpl_vars['photos']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
     foreach ($_from as $this->_tpl_vars['tid'] => $this->_tpl_vars['photo']):
 ?>
@@ -119,14 +118,14 @@ photo_thumb" align="center">
 .html" title="<?php echo ((is_array($_tmp=$this->_tpl_vars['photo']['title'])) ? $this->_run_mod_handler('escape', true, $_tmp, 'html') : smarty_modifier_escape($_tmp, 'html')); ?>
 ">
                 <?php endif; ?>
-                    <img src="/images/photos/small/<?php echo $this->_tpl_vars['photo']['file']; ?>
+                    <div class="image_wrapper"><img src="/images/photos/small/<?php echo $this->_tpl_vars['photo']['file']; ?>
 " alt="<?php echo ((is_array($_tmp=$this->_tpl_vars['photo']['title'])) ? $this->_run_mod_handler('escape', true, $_tmp, 'html') : smarty_modifier_escape($_tmp, 'html')); ?>
-" />
+" /></div>
                 </a><br />
-                <a href="/photos/photo<?php echo $this->_tpl_vars['photo']['id']; ?>
+                <?php  $inUser = cmsUser::getInstance(); if($inUser->is_admin){  ?><a class="photo-edit" href="/photos/photo<?php echo $this->_tpl_vars['photo']['id']; ?>
 .html" title="<?php echo ((is_array($_tmp=$this->_tpl_vars['photo']['title'])) ? $this->_run_mod_handler('escape', true, $_tmp, 'html') : smarty_modifier_escape($_tmp, 'html')); ?>
 "><?php echo ((is_array($_tmp=$this->_tpl_vars['photo']['title'])) ? $this->_run_mod_handler('truncate', true, $_tmp, 18) : smarty_modifier_truncate($_tmp, 18)); ?>
-</a>
+</a><?php } ?>
                 <?php if ($this->_tpl_vars['album']['showdate']): ?>
                     <div class="mod_lp_albumlink"><div class="mod_lp_details">
                     <table cellpadding="2" cellspacing="0" align="center"><tr>
@@ -161,6 +160,5 @@ photo_thumb" align="center">
 <?php echo $this->_tpl_vars['pagebar']; ?>
 
 <?php else: ?>
-	<?php if ($this->_tpl_vars['album']['parent_id'] > 0): ?><p><?php echo $this->_tpl_vars['LANG']['NOT_PHOTOS_IN_ALBUM']; ?>
-</p><?php endif; ?>
+	<?php if ($this->_tpl_vars['album']['parent_id'] > 0): ?><p></p><?php endif; ?>
 <?php endif; ?>

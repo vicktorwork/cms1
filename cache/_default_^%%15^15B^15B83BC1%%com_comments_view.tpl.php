@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.28, created on 2015-02-11 20:22:45
+<?php /* Smarty version 2.6.28, created on 2015-02-23 16:48:45
          compiled from com_comments_view.tpl */ ?>
 <div class="cmm_heading">
 	<?php echo $this->_tpl_vars['labels']['comments']; ?>

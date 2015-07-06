@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.28, created on 2015-02-11 20:22:45
+<?php /* Smarty version 2.6.28, created on 2015-02-23 16:48:45
          compiled from com_comments_list.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'math', 'com_comments_list.tpl', 3, false),array('function', 'profile_url', 'com_comments_list.tpl', 16, false),array('function', 'template', 'com_comments_list.tpl', 34, false),array('function', 'csrf_token', 'com_comments_list.tpl', 69, false),array('modifier', 'rating', 'com_comments_list.tpl', 33, false),array('modifier', 'escape', 'com_comments_list.tpl', 63, false),)), $this); ?>

@@ -46,7 +46,7 @@ if ($do=='view'){
 		cmsCore::redirect('/content');
 
 	}
-
+//echo "<pre>"; var_dump($cat);
 	// если не корень категорий
 	if($cat['NSLevel'] > 0){
 

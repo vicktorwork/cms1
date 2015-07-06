@@ -415,7 +415,7 @@ if(!defined('VALID_CMS_ADMIN')) { die('ACCESS DENIED'); }
 				}*/
 				$fields[] = array('title'=>'id', 'field'=>'id', 'width'=>'30');
 				//$fields[] = array('title'=>$_LANG['TITLE'], 'field'=>'title', 'width'=>'', 'link'=>(cmsCore::inRequest('on_moderate') ? '/catalog/item%id%.html' : '/catalog/edit%id%.html'), 'filter'=>15);
-				$fields[] = array('title'=>'Изображение', 'field'=>'image', 'image'=>'/images/photos/small/%photo%', 'width'=>'100');
+				$fields[] = array('title'=>'Изображение', 'field'=>'image', 'image'=>'/images/photos/%photo%', 'width'=>'100');
 				$fields[] = array('title'=>$_LANG['TITLE'], 'field'=>'title', 'width'=>'', 'filter'=>15);
 				//$fields[] = array('title'=>$_LANG['AD_IS_PUBLISHED'], 'field'=>'published', 'width'=>'100', 'do'=>'opt', 'do_suffix'=>'_item');
 				//$fields[] = array('title'=>$_LANG['AD_CAT_BOARD'], 'field'=>'category_id', 'width'=>'200', 'prc'=>'cpCatalogCatById', 'filter'=>1, 'filterlist'=>cpGetList('cms_uc_cats'));

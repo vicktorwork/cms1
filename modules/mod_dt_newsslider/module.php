@@ -20,7 +20,7 @@ function mod_dt_newsslider($module_id, $cfg){
 
 		}
 		
-		$inDB->orderBy('con.pubdate', 'DESC');
+		$inDB->orderBy('con.ordering', 'ASC');
 		$inDB->limit($cfg['newscount']);
 		$slider_list = $model->getArticlesList();
 		if(!$slider_list) { return false; }

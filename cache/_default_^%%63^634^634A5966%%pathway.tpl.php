@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.28, created on 2015-07-06 11:58:07
+<?php /* Smarty version 2.6.28, created on 2015-02-23 15:13:04
          compiled from pathway.tpl */ ?>
 <div class="pathway">
     <?php $_from = $this->_tpl_vars['pathway']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }$this->_foreach['pathway'] = array('total' => count($_from), 'iteration' => 0);
@@ -17,4 +17,4 @@ if ($this->_foreach['pathway']['total'] > 0):
         <?php if (! ($this->_foreach['pathway']['iteration'] == $this->_foreach['pathway']['total'])): ?><?php echo $this->_tpl_vars['separator']; ?>
 <?php endif; ?>
     <?php endforeach; endif; unset($_from); ?>
-</div>
+</div>

@@ -7,7 +7,7 @@
  */
 if(!defined('VALID_CMS')) { die('ACCESS DENIED'); }
 
-$_LANG['DTNEWSSLIDER_MORE']   ='Подробнее...';
+$_LANG['DTNEWSSLIDER_MORE']   ='Детальнее &raquo';
 $_LANG['DTNEWSSLIDER_NEXT']   ='Следующая новость';
 $_LANG['DTNEWSSLIDER_PREV']   ='Предыдущая новость';
 

@@ -73,7 +73,7 @@ if ($opt == 'list'){
     //$actions[] = array('title'=>$_LANG['EDIT'], 'icon'=>'edit.gif', 'link'=>'?view=components&do=config&id='.$id.'&opt=edit&item_id=%id%');
     $actions[] = array('title'=>$_LANG['DELETE'], 'icon'=>'delete.gif', 'confirm'=>$_LANG['AD_BANNER_DEL_CONFIRM'], 'link'=>'?view=components&do=config&id='.$id.'&opt=delete&item_id=%id%'); 
 
-    cpListTable('vds_user_files', $fields, $actions, '', 'pubdate DESC');
+    cpListTable('cms_user_files', $fields, $actions, '', 'pubdate DESC');
 	
 	//echo cmsCore::fileIcon('site-vizitka-154d230d5317ff.png');
 	?>

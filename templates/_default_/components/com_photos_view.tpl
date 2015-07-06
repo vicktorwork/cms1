@@ -1,4 +1,6 @@
-{if $album.id == $root_album_id && $cfg.showlat}
+
+<h1 class="con_heading">{$album.title}</h1>{if $album.id == $root_album_id && $cfg.showlat}
+
 <div class="float_bar">
     <table cellspacing="0" cellpadding="0">
       <tr>
@@ -35,7 +37,6 @@
 	<div class="float_bar"><a class="photo_add_link" href="/photos/{$album.id}/addphoto.html">{$LANG.ADD_PHOTO_TO_ALBUM}</a></div>
 {/if}
 
-<h1 class="con_heading">{$album.title} {if $total}({$total}){/if}</h1>
 
 <div class="clear"></div>
 {if $album.description}
@@ -47,11 +48,11 @@
         {if $col==1}<div class="photo_row">{/if}
             <div class="photo_album_tumb">
                 <div class="photo_container">
-                    <a href="/photos/{$cat.id}"><img class="photo_album_img" src="/images/photos/small/{$cat.file}" alt="{$cat.title|escape:'html'}" width="{$cat.thumb1}px" /></a>
+                    <a href="/photos/{$cat.id}"><img class="photo_album_img" src="/images/photos/medium/{$cat.file}" alt="{$cat.title|escape:'html'}" width="{$cat.thumb1}px" /></a>
                 </div>
                 <div class="photo_txt">
                     <ul>
-                        <li class="photo_album_title"><a href="/photos/{$cat.id}">{$cat.title}</a> ({$cat.content_count})</li>
+                        <li class="photo_album_title"><a href="/photos/{$cat.id}">{$cat.title|truncate:20}</a></li>
                         {if $cat.description}<li>{$cat.description}</li>{/if}
                     </ul>
                 </div>
@@ -68,7 +69,7 @@
 {if $photos}
 {assign var="col" value="1"}
 <div class="photo_gallery">
-    <table cellpadding="0" cellspacing="0">
+    <table cellpadding="0" cellspacing="0" style="margin: 0 auto;">
     {foreach key=tid item=photo from=$photos}
         {if $col==1} <tr> {/if}
         <td align="center" valign="middle" width="{math equation="100/x" x=$album.maxcols}%">
@@ -78,9 +79,9 @@
                 {else}
                 <a href="/photos/photo{$photo.id}.html" title="{$photo.title|escape:'html'}">
                 {/if}
-                    <img src="/images/photos/small/{$photo.file}" alt="{$photo.title|escape:'html'}" />
+                    <div class="image_wrapper"><img src="/images/photos/small/{$photo.file}" alt="{$photo.title|escape:'html'}" /></div>
                 </a><br />
-                <a href="/photos/photo{$photo.id}.html" title="{$photo.title|escape:'html'}">{$photo.title|truncate:18}</a>
+                {php} $inUser = cmsUser::getInstance(); if($inUser->is_admin){ {/php}<a class="photo-edit" href="/photos/photo{$photo.id}.html" title="{$photo.title|escape:'html'}">{$photo.title|truncate:18}</a>{php}}{/php}
                 {if $album.showdate}
                     <div class="mod_lp_albumlink"><div class="mod_lp_details">
                     <table cellpadding="2" cellspacing="0" align="center"><tr>
@@ -105,5 +106,5 @@
 </div>
 {$pagebar}
 {else}
-	{if $album.parent_id > 0}<p>{$LANG.NOT_PHOTOS_IN_ALBUM}</p>{/if}
+	{if $album.parent_id > 0}<p>{*$LANG.NOT_PHOTOS_IN_ALBUM*}</p>{/if}
 {/if}

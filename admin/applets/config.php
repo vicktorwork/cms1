@@ -33,6 +33,7 @@ function applet_config(){
 
         $newCFG['hometitle'] 	= stripslashes(cmsCore::request('hometitle', 'str', ''));
         $newCFG['homecom']      = cmsCore::request('homecom', 'str', '');
+        $newCFG['slogan']      	= cmsCore::request('slogan', 'str', '');
 
 		$newCFG['siteoff'] 		= cmsCore::request('siteoff', 'int', 0);
 		$newCFG['debug'] 		= cmsCore::request('debug', 'int', 0);
@@ -77,15 +78,37 @@ function applet_config(){
 
         $newCFG['seo_url_count'] = cmsCore::request('seo_url_count', 'int', 0);
 		$newCFG['allow_ip']		 = cmsCore::request('allow_ip', 'str', '');
-
+		
+		$newCFG['phone1']		 = cmsCore::request('phone1', 'str', '');
+		$newCFG['phone2']		 = cmsCore::request('phone2', 'str', '');
+		
+		$newCFG['google']		 = cmsCore::request('google', 'str', '');
+		$newCFG['facebook']		 = cmsCore::request('facebook', 'str', '');
+		$newCFG['vk']		 = cmsCore::request('vk', 'str', '');
+		
 		if (cmsConfig::saveToFile($newCFG)){
 			cmsCore::addSessionMessage($_LANG['AD_CONFIG_SAVE_SUCCESS'] , 'success');
         } else {
 			cmsCore::addSessionMessage($_LANG['AD_CONFIG_SITE_ERROR'], 'error');
         }
-
+		
+		/* if((isset($_SESSION['lang']) && $_SESSION['lang'] == 'ru') || !isset($_SESSION['lang'])) {
+			if (cmsConfig::saveToFile($newCFG)){
+				cmsCore::addSessionMessage($_LANG['AD_CONFIG_SAVE_SUCCESS'] , 'success');
+			} else {
+				cmsCore::addSessionMessage($_LANG['AD_CONFIG_SITE_ERROR'], 'error');
+			}
+		}
+		else{
+			if (cmsConfig::saveToFile($newCFG, $_SESSION['lang'] . '_config.inc.php')){
+				cmsCore::addSessionMessage($_LANG['AD_CONFIG_SAVE_SUCCESS'] , 'success');
+			} else {
+				cmsCore::addSessionMessage($_LANG['AD_CONFIG_SITE_ERROR'], 'error');
+			}
+		} */
+		
         cmsCore::clearCache();
-
+		
 		cmsCore::redirect('index.php?view=config');
 
 	}
@@ -94,18 +117,22 @@ function applet_config(){
 <div>
 
       <?php cpCheckWritable('/includes/config.inc.php'); ?>
+      <?php cpCheckWritable('/includes/ua_config.inc.php'); ?>
+      <?php cpCheckWritable('/includes/en_config.inc.php'); ?>
 
 <div id="config_tabs" class="uitabs">
 
   <ul id="tabs">
-	  	<li><a href="#basic"><span><?php echo $_LANG['AD_SITE']; ?></span></a></li>
 	  	<li><a href="#home"><span><?php echo $_LANG['AD_MAIN']; ?></span></a></li>
+	  	<li><a href="#basic"><span><?php echo $_LANG['AD_SITE']; ?></span></a></li>
 		<li><a href="#design"><span><?php echo $_LANG['AD_DESIGN']; ?></span></a></li>
 		<li><a href="#time"><span><?php echo $_LANG['AD_TIME'] ; ?></span></a></li>
 		<li><a href="#database"><span><?php echo $_LANG['AD_DB'] ; ?></span></a></li>
 		<li><a href="#mail"><span><?php echo $_LANG['AD_POST']; ?></span></a></li>
 		<li><a href="#other"><span><?php echo $_LANG['AD_PATHWAY']; ?></span></a></li>
 		<li><a href="#seq"><span><?php echo $_LANG['AD_SECURITY']; ?></span></a></li>
+		<li><a href="#phone"><span><?php echo $_LANG['AD_PHONES']; ?></span></a></li>
+		<li><a href="#networks"><span><?php echo $_LANG['AD_NETWORKS']; ?></span></a></li>
   </ul>
 
 	<form action="/admin/index.php?view=config" method="post" name="CFGform" target="_self" id="CFGform" style="margin-bottom:30px">
@@ -233,6 +260,16 @@ function applet_config(){
         </div>
         <div id="home">
 			<table width="720" border="0" cellpadding="5">
+                <tr>
+    				<td>
+                        <strong>Текст (слоган) под логотипом</strong><br />
+						<span class="hinttext">Если не указан, будет совпадать с названием сайта</span><br/>
+                        <?/*php<span class="hinttext"><?php echo $_LANG['AD_BROWSER_TITLE']; ?></span>*/?>
+                    </td>
+                    <td width="350" valign="top">
+                        <input name="slogan" type="text" id="slogan" value="<?php echo htmlspecialchars($config['slogan']);?>" style="width:358px" />
+                    </td>
+			    </tr>
                 <tr>
     				<td>
                         <strong><?php echo $_LANG['AD_MAIN_PAGE']; ?></strong><br />
@@ -516,7 +553,36 @@ function applet_config(){
 					<input name="allow_ip" type="text" id="allow_ip" value="<?php echo htmlspecialchars($config['allow_ip']);?>" style="width:358px" /></td>
 				</tr>
 			</table>
-    <p style="color:#900"><?php echo $_LANG['AD_ATTENTION']; ?></p>
+		<p style="color:#900"><?php echo $_LANG['AD_ATTENTION']; ?></p>
+        </div>
+        <div id="phone">
+			<table width="720" border="0" cellpadding="5">
+				<tr>
+					<td><p class="hinttext"><?php echo "Введите номера ваших телефонов в текстовые поля (+38 (0ХХ) ХХХ-ХХ-ХХ)"; ?></p></td>
+				</tr>
+				<tr>
+					<td valign="top"><input type="text" id="allow_ip" name="phone1" value="<?php echo htmlspecialchars($config['phone1']);?>" style="width:358px" placeholder="Телефон 1" /></td>
+				</tr>
+				<tr>
+					<td valign="top"><input type="text" id="allow_ip" name="phone2" value="<?php echo htmlspecialchars($config['phone2']);?>" style="width:358px" placeholder="Телефон 2" /></td>
+				</tr>
+			</table>
+        </div>
+        <div id="networks">
+			<table width="720" border="0" cellpadding="5">
+				<tr>
+					<td><p class="hinttext"><?php echo "Введите ссылки на социальные сети (http://www.******.***)"; ?></p></td>
+				</tr>
+				<tr>
+					<td valign="top"><input type="text" id="allow_ip" name="google" value="<?php echo htmlspecialchars($config['google']);?>" style="width:358px" placeholder="Google Plus" /></td>
+				</tr>
+				<tr>
+					<td valign="top"><input type="text" id="allow_ip" name="facebook" value="<?php echo htmlspecialchars($config['facebook']);?>" style="width:358px" placeholder="Facebook" /></td>
+				</tr>
+				<tr>
+					<td valign="top"><input type="text" id="allow_ip" name="vk" value="<?php echo htmlspecialchars($config['vk']);?>" style="width:358px" placeholder="Вконтакте" /></td>
+				</tr>
+			</table>
         </div>
 
 	<div align="left">

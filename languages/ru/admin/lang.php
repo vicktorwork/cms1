@@ -27,6 +27,7 @@ $_LANG['AD_COMPONENTS']           = 'Компоненты';
 $_LANG['AD_COMPONENT']            = 'Компонент';
 $_LANG['AD_INSTALL_COMPONENTS']   = 'Установить компоненты';
 $_LANG['AD_HELP']                 = 'Помощь';
+$_LANG['AD_FILES']                = 'Прайсы (файлы для скачивания)';
 $_LANG['AD_DOCS']                 = 'Документация';
 $_LANG['AD_PHP_INFO']             = 'Информация PHP';
 $_LANG['AD_CONFIG_SAVE_SUCCESS']  = 'Настройки успешно сохранены';

@@ -95,6 +95,10 @@ class cmsConfig {
                 'allow_ip'=>'');
 
         $f = PATH.'/includes/config.inc.php';
+		
+		if(isset($_SESSION['lang']) && $_SESSION['lang'] != 'ru') {
+			$f = PATH.'/includes/'. $_SESSION['lang'] .'_config.inc.php';
+		}
         if (file_exists($f)){ require($f); } else { $_CFG = array(); }
 
         $cfg = array_merge($d_cfg, $_CFG);
@@ -104,7 +108,7 @@ class cmsConfig {
         }
 
         $cfg['cookie_key'] = md5($cfg['sitename']);
-
+		
         return $cfg;
 
     }
@@ -136,7 +140,11 @@ class cmsConfig {
      * @param array $_CFG
      */
     public static function saveToFile($_CFG, $file='config.inc.php'){
-
+	
+		if(isset($_SESSION['lang']) && $_SESSION['lang'] != 'ru') {
+			$file = $_SESSION['lang'] . '_config.inc.php';
+		}
+		
         global $_LANG;
         $filepath = PATH.'/includes/'.$file;
 

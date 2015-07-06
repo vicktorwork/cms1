@@ -1,21 +1,15 @@
-<?php /* Smarty version 2.6.28, created on 2015-07-06 11:58:15
+<?php /* Smarty version 2.6.28, created on 2015-02-23 15:28:14
          compiled from com_content_read.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'profile_url', 'com_content_read.tpl', 7, false),array('function', 'math', 'com_content_read.tpl', 22, false),array('modifier', 'escape', 'com_content_read.tpl', 37, false),array('modifier', 'spellcount', 'com_content_read.tpl', 66, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'math', 'com_content_read.tpl', 22, false),array('modifier', 'spellcount', 'com_content_read.tpl', 66, false),)), $this); ?>
 <?php if ($this->_tpl_vars['article']['showtitle']): ?>
     <h1 class="con_heading"><?php echo $this->_tpl_vars['article']['title']; ?>
 </h1>
 <?php endif; ?>
 
-<?php if ($this->_tpl_vars['article']['showdate']): ?>
-	<div class="con_pubdate">
-		<?php if (! $this->_tpl_vars['article']['published']): ?><span style="color:#CC0000"><?php echo $this->_tpl_vars['LANG']['NO_PUBLISHED']; ?>
-</span><?php else: ?><?php echo $this->_tpl_vars['article']['pubdate']; ?>
-<?php endif; ?> - <a href="<?php echo cmsSmartyProfileURL(array('login' => $this->_tpl_vars['article']['user_login']), $this);?>
-"><?php echo $this->_tpl_vars['article']['author']; ?>
-</a>
-	</div>
-<?php endif; ?>
+	<!--div class="con_pubdate">
+		<span style="color:#CC0000"></span> - <a href=""></a>
+	</div-->
 
 <?php if ($this->_tpl_vars['is_pages']): ?>
 	<div class="con_pt" id="pt">
@@ -50,15 +44,8 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'profile_url
 	</div>
 <?php endif; ?>
 
-<div class="con_text" style="overflow:hidden">
-    <?php if ($this->_tpl_vars['article']['image']): ?>
-        <div class="con_image" style="float:left;margin-top:10px;margin-right:20px;margin-bottom:20px">
-            <img src="/images/photos/medium/<?php echo $this->_tpl_vars['article']['image']; ?>
-" alt="<?php echo ((is_array($_tmp=$this->_tpl_vars['article']['title'])) ? $this->_run_mod_handler('escape', true, $_tmp, 'html') : smarty_modifier_escape($_tmp, 'html')); ?>
-"/>
-        </div>
-    <?php endif; ?>
-    <?php echo $this->_tpl_vars['article']['content']; ?>
+<div class="con_text just_text" style="overflow:hidden">
+        <?php echo $this->_tpl_vars['article']['content']; ?>
 
 </div>
 
@@ -106,4 +93,3 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'profile_url
 		<?php endif; ?>
 	</div>
 <?php endif; ?>
-

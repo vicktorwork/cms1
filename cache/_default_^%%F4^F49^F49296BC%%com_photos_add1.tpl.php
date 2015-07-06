@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.28, created on 2015-04-27 20:02:27
+<?php /* Smarty version 2.6.28, created on 2015-02-23 15:13:04
          compiled from com_photos_add1.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('modifier', 'escape', 'com_photos_add1.tpl', 26, false),)), $this); ?>

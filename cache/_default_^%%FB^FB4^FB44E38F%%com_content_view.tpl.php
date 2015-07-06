@@ -1,7 +1,7 @@
-<?php /* Smarty version 2.6.28, created on 2015-07-06 11:58:07
+<?php /* Smarty version 2.6.28, created on 2015-02-27 17:08:15
          compiled from com_content_view.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
-smarty_core_load_plugins(array('plugins' => array(array('function', 'template', 'com_content_view.tpl', 8, false),array('function', 'math', 'com_content_view.tpl', 40, false),array('function', 'profile_url', 'com_content_view.tpl', 80, false),array('modifier', 'escape', 'com_content_view.tpl', 42, false),array('modifier', 'truncate', 'com_content_view.tpl', 45, false),array('modifier', 'spellcount', 'com_content_view.tpl', 85, false),)), $this); ?>
+smarty_core_load_plugins(array('plugins' => array(array('function', 'template', 'com_content_view.tpl', 8, false),array('function', 'math', 'com_content_view.tpl', 43, false),array('function', 'profile_url', 'com_content_view.tpl', 85, false),array('modifier', 'escape', 'com_content_view.tpl', 45, false),array('modifier', 'spellcount', 'com_content_view.tpl', 90, false),)), $this); ?>
 <?php if (! $this->_tpl_vars['is_homepage']): ?>
     <?php if ($this->_tpl_vars['cat']['showrss']): ?>
         <table cellpadding="0" cellspacing="0" border="0">
@@ -50,9 +50,9 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'template', 
     <?php if ($this->_tpl_vars['cat_photos']['album']['title']): ?>
         <h3><?php echo $this->_tpl_vars['cat_photos']['album']['title']; ?>
 </h3>
-    <?php endif; ?>
+	<?php endif; ?>
     <?php $this->assign('fcol', '1'); ?>
-    <table cellpadding="0" cellspacing="0" border="0">
+    <table cellpadding="0" cellspacing="0" border="0" style="margin: 20px auto;">
         <?php $_from = $this->_tpl_vars['cat_photos']['photos']; if (!is_array($_from) && !is_object($_from)) { settype($_from, 'array'); }if (count($_from)):
     foreach ($_from as $this->_tpl_vars['tid'] => $this->_tpl_vars['con']):
 ?>
@@ -63,15 +63,11 @@ smarty_core_load_plugins(array('plugins' => array(array('function', 'template', 
                     <a class="lightbox-enabled" rel="lightbox-galery" href="/images/photos/medium/<?php echo $this->_tpl_vars['con']['file']; ?>
 " title="<?php echo ((is_array($_tmp=$this->_tpl_vars['con']['title'])) ? $this->_run_mod_handler('escape', true, $_tmp, 'html') : smarty_modifier_escape($_tmp, 'html')); ?>
 ">
-                        <img class="photo_thumb_img" src="/images/photos/small/<?php echo $this->_tpl_vars['con']['file']; ?>
+                        <div class="image_wrapper"><img class="photo_thumb_img" src="/images/photos/small/<?php echo $this->_tpl_vars['con']['file']; ?>
 " alt="<?php echo ((is_array($_tmp=$this->_tpl_vars['con']['title'])) ? $this->_run_mod_handler('escape', true, $_tmp, 'html') : smarty_modifier_escape($_tmp, 'html')); ?>
-" />
+" /></div>
                     </a><br />
-                    <a href="/photos/photo<?php echo $this->_tpl_vars['con']['id']; ?>
-.html" title="<?php echo ((is_array($_tmp=$this->_tpl_vars['con']['title'])) ? $this->_run_mod_handler('escape', true, $_tmp, 'html') : smarty_modifier_escape($_tmp, 'html')); ?>
-"><?php echo ((is_array($_tmp=$this->_tpl_vars['con']['title'])) ? $this->_run_mod_handler('truncate', true, $_tmp, 15) : smarty_modifier_truncate($_tmp, 15)); ?>
-</a>
-                </div>
+                                    </div>
             </td>
         <?php if ($this->_tpl_vars['fcol'] == $this->_tpl_vars['cat_photos']['album']['maxcols']): ?> </tr> <?php $this->assign('fcol', '1'); ?> <?php else: ?> <?php echo smarty_function_math(array('equation' => "x + 1",'x' => $this->_tpl_vars['fcol'],'assign' => 'fcol'), $this);?>
  <?php endif; ?>

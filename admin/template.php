@@ -28,6 +28,12 @@
 </head>
 
 <body>
+<script>
+function setLang(lang){
+	$('body').append('<form id="lform" style="display:none" method="post" action="/set_lang.php"><input type="hidden" name="lang" value="'+lang+'"/></form>');
+	$('#lform').submit();
+}
+</script>
     <table cellpadding="0" cellspacing="0" border="0" width="100%" height="100%">
         <tr>
             <td valign="top">
@@ -117,6 +123,22 @@ function openbox(id){
                                     <div class="juser"><?php echo $_LANG['AD_YOU']; ?> &mdash; <a href="<?php echo cmsUser::getProfileURL($inUser->login); ?>" target="_blank" title="<?php echo $_LANG['AD_GO_PROFILE']; ?>"><?php echo $inDB->get_field('cms_users', 'id='.$inUser->id, 'nickname'); ?></a>, ip: <?php echo $inUser->ip ?></div>
                                     <div class="jmessages"><?php echo $msg_link; ?></div>
                                 </td>
+								<td>
+									<?php if ($inConf->is_change_lang){
+
+										$langs = cmsCore::getDirsList('/languages'); ?>
+										
+										<div onclick="$('#langs-select').toggle().toggleClass('active_lang');$(this).toggleClass('active_lang'); return false;" title="<?php echo $_LANG['TEMPLATE_INTERFACE_LANG']; ?>" id="langs" style="background-image:  url(/templates/_default_/images/icons/langs/<?php echo $inConf->lang; ?>.png); margin: 0 20px;">
+											<span>&#9660;</span>
+											<ul id="langs-select">
+												<?php foreach ($langs as $lng) { if($lng != 'core') { ?>
+													<li onclick="setLang('<?php echo $lng; ?>'); return false;" style="background-image:  url(/templates/<?php echo TEMPLATE; ?>/images/icons/langs/<?php echo $lng; ?>.png);"><?php echo $lng; ?></li>
+												<?php } } ?>
+											</ul>
+										</div>
+
+									<?php } ?>
+								</td>
                                 <td width="120">
                                     <div class="jsite"><a href="/" target="_blank"><?php echo $_LANG['AD_OPEN_SITE']; ?></a></div>
                                     <div class="jlogout"><a href="/logout" target="" ><?php echo $_LANG['AD_EXIT']; ?></a></div>

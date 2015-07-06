@@ -32,17 +32,22 @@
 {if $cat_photos}
     {if $cat_photos.album.title}
         <h3>{$cat_photos.album.title}</h3>
-    {/if}
+	{/if}
+{*php} $inUser = cmsUser::getInstance(); if($inUser->is_admin){ {/php} 
+	<a class="photo-edit" href="/photos/{$cat_photos.album.id}">Альбом: {$pagetitle}</a>
+{php}}{/php*}
     {assign var="fcol" value="1"}
-    <table cellpadding="0" cellspacing="0" border="0">
+    <table cellpadding="0" cellspacing="0" border="0" style="margin: 20px auto;">
         {foreach key=tid item=con from=$cat_photos.photos}
             {if $fcol==1} <tr> {/if}
             <td align="center" valign="middle" width="{math equation="100/x" x=$cat_photos.album.maxcols}%">
                 <div class="photo_thumb" align="center">
                     <a class="lightbox-enabled" rel="lightbox-galery" href="/images/photos/medium/{$con.file}" title="{$con.title|escape:'html'}">
-                        <img class="photo_thumb_img" src="/images/photos/small/{$con.file}" alt="{$con.title|escape:'html'}" />
+                        <div class="image_wrapper"><img class="photo_thumb_img" src="/images/photos/small/{$con.file}" alt="{$con.title|escape:'html'}" /></div>
                     </a><br />
-                    <a href="/photos/photo{$con.id}.html" title="{$con.title|escape:'html'}">{$con.title|truncate:15}</a>
+                    {*php} $inUser = cmsUser::getInstance(); if($inUser->is_admin){ {/php} 
+			<a class="photo-edit" href="/photos/photo{$con.id}.html" title="{$con.title|escape:'html'}">{$con.title|truncate:15}</a>
+		    {php}}{/php*}
                 </div>
             </td>
         {if $fcol==$cat_photos.album.maxcols} </tr> {assign var="fcol" value="1"} {else} {math equation="x + 1" x=$fcol assign="fcol"} {/if}

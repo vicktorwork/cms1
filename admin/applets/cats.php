@@ -143,9 +143,14 @@ function applet_cats(){
             cmsCore::clearAccess($category['id'], 'category');
         }
 
-
+			if(isset($_SESSION['lang']) && $_SESSION['lang'] != 'ru') {
+				$file = 'cat_article'.$category['id'].'_'.$_SESSION['lang'].'.jpg';
+			}
+			else{
+				$file = 'cat_article'.$category['id'].'.jpg';
+			}
 			// работа с файлами! 
-			$file = 'cat_article'.$category['id'].'.jpg';
+			//$file = 'cat_article'.$category['id'].'.jpg';
 
             if (cmsCore::request('delete_image', 'int', 0)){
                 @unlink(PATH."/images/photos/small/$file");
@@ -478,10 +483,22 @@ function applet_cats(){
                     <div style="margin-bottom:10px">
                         <?php
                             if ($do=='edit'){
-                                if (file_exists(PATH.'/images/photos/small/cat_article'.$mod['id'].'.jpg')){
+							
+								if(isset($_SESSION['lang']) && $_SESSION['lang'] != 'ru') {
+									$mod_id = $mod['id'] . '_' . $_SESSION['lang'];
+									$id_art = $mod['id'] . '_' . $_SESSION['lang'];
+								}
+								else{
+									$mod_id = $mod['id'];
+									$id_art = $id;
+								}
+								
+                                //if (file_exists(PATH.'/images/photos/small/cat_article'.$mod['id'].'.jpg')){
+                                if (file_exists(PATH.'/images/photos/small/cat_article'.$mod_id.'.jpg')){
                         ?>
                         <div style="margin-top:3px;margin-bottom:3px;padding:10px;border:solid 1px gray;text-align:center">
-                            <img src="/images/photos/small/cat_article<?php echo $id; ?>.jpg" border="0" />
+                            <?/*php<img src="/images/photos/small/cat_article<?php echo $id; ?>.jpg" border="0" />*/?>
+                            <img src="/images/photos/small/cat_article<?php echo $id_art; ?>.jpg" border="0" />
                         </div>
                         <table cellpadding="0" cellspacing="0" border="0">
                             <tr>

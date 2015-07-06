@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.28, created on 2015-07-06 11:56:35
+<?php /* Smarty version 2.6.28, created on 2015-02-23 15:12:17
          compiled from module.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'template', 'module.tpl', 8, false),)), $this); ?>
@@ -25,4 +25,4 @@ moduletitle">
 modulebody"><?php echo $this->_tpl_vars['mod']['body']; ?>
 </div>
 
-</div>
+</div>

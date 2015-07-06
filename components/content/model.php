@@ -228,7 +228,6 @@ class cms_model_content{
         if ($only_published){
             $this->inDB->where("con.published = 1 AND con.pubdate <= '$today' AND (con.is_end=0 OR (con.is_end=1 AND con.enddate >= '$today'))");
         }
-
         $sql = "SELECT con.*,
                        con.pubdate as fpubdate,
 					   cat.title as cat_title, cat.seolink as catseolink,
@@ -261,7 +260,133 @@ class cms_model_content{
 			$article['comments'] = cmsCore::getCommentsCount('article', $article['id']);
             $article['url']      = $this->getArticleURL(null, $article['seolink']);
 			$article['cat_url']  = $this->getCategoryURL(null, $article['catseolink']);
-            $article['image']    = (file_exists(PATH.'/images/photos/small/article'.$article['id'].'.jpg') ? 'article'.$article['id'].'.jpg' : '');
+			if(isset($_SESSION['lang']) && $_SESSION['lang'] != 'ru') {
+				$article['image']    = (file_exists(PATH.'/images/photos/small/article'.$article['id'].'_'.$_SESSION['lang'].'.jpg') ? 'article'.$article['id'].'_'.$_SESSION['lang'].'.jpg' : '');
+			}
+			else{
+				$article['image']    = (file_exists(PATH.'/images/photos/small/article'.$article['id'].'.jpg') ? 'article'.$article['id'].'.jpg' : '');
+			}
+            $articles[] = $article;
+        }
+
+        $articles = cmsCore::callEvent('GET_ARTICLES', $articles);
+
+        return $articles;
+
+    }
+
+
+/* ==================================================================================================== */
+/* ==================================================================================================== */
+    /**
+     * Получаем статьи по заданным параметрам
+     * @return array
+     */
+    public function getArticlesList3($only_published=true, $cont_id='') {
+
+		$today = date("Y-m-d H:i:s");
+
+        if ($only_published){
+            $this->inDB->where("con.published = 1 AND con.pubdate <= '$today' AND (con.is_end=0 OR (con.is_end=1 AND con.enddate >= '$today')) AND con.id='$cont_id'");
+        }
+        $sql = "SELECT con.*,
+                       con.pubdate as fpubdate,
+					   cat.title as cat_title, cat.seolink as catseolink,
+					   cat.showdesc,
+                       u.nickname as author,
+                       u.login as user_login
+                FROM cms_content con
+				INNER JOIN cms_category cat ON cat.id = con.category_id
+				LEFT JOIN cms_users u ON u.id = con.user_id
+                WHERE con.is_arhive = 0
+                      {$this->inDB->where}
+
+                {$this->inDB->group_by}
+
+                {$this->inDB->order_by}\n";
+
+        if ($this->inDB->limit){
+            $sql .= "LIMIT {$this->inDB->limit}";
+        }
+
+        $result = $this->inDB->query($sql);
+
+        $this->inDB->resetConditions();
+
+        if (!$this->inDB->num_rows($result)) { return false; }
+
+        while($article = $this->inDB->fetch_assoc($result)){
+			$article['fpubdate'] = cmsCore::dateFormat($article['fpubdate']);
+			$article['tagline']  = cmsTagLine('content', $article['id'], true);
+			$article['comments'] = cmsCore::getCommentsCount('article', $article['id']);
+            $article['url']      = $this->getArticleURL(null, $article['seolink']);
+			$article['cat_url']  = $this->getCategoryURL(null, $article['catseolink']);
+            if(isset($_SESSION['lang']) && $_SESSION['lang'] != 'ru') {
+				$article['image']    = (file_exists(PATH.'/images/photos/small/article'.$article['id'].'_'.$_SESSION['lang'].'.jpg') ? 'article'.$article['id'].'_'.$_SESSION['lang'].'.jpg' : '');
+			}
+			else{
+				$article['image']    = (file_exists(PATH.'/images/photos/small/article'.$article['id'].'.jpg') ? 'article'.$article['id'].'.jpg' : '');
+			}
+            $articles[] = $article;
+        }
+
+        $articles = cmsCore::callEvent('GET_ARTICLES', $articles);
+
+        return $articles;
+
+    }
+
+/* ==================================================================================================== */
+/* ==================================================================================================== */
+    /**
+     * Получаем статьи по id категориям
+     * @return array
+     */
+    public function getArticlesList2($only_published=true, $cat_id = '1') {
+
+		$today = date("Y-m-d H:i:s");
+
+        if ($only_published){
+            $this->inDB->where("con.published = 1 AND con.pubdate <= '$today' AND (con.is_end=0 OR (con.is_end=1 AND con.enddate >= '$today')) AND con.category_id = '$cat_id'");
+        }
+        $sql = "SELECT con.*,
+                       con.pubdate as fpubdate,
+					   cat.title as cat_title, cat.seolink as catseolink,
+					   cat.showdesc, cat.description as catdescription,
+                       u.nickname as author,
+                       u.login as user_login
+                FROM cms_content con
+				INNER JOIN cms_category cat ON cat.id = con.category_id
+				LEFT JOIN cms_users u ON u.id = con.user_id
+                WHERE con.is_arhive = 0
+                      {$this->inDB->where}
+
+                {$this->inDB->group_by}
+
+                ORDER BY con.ordering\n";
+
+        if ($this->inDB->limit){
+            $sql .= "LIMIT {$this->inDB->limit}";
+        }
+
+        $result = $this->inDB->query($sql);
+
+        $this->inDB->resetConditions();
+
+        if (!$this->inDB->num_rows($result)) { return false; }
+
+        while($article = $this->inDB->fetch_assoc($result)){
+			$article['fpubdate'] = cmsCore::dateFormat($article['fpubdate']);
+			$article['tagline']  = cmsTagLine('content', $article['id'], true);
+			$article['comments'] = cmsCore::getCommentsCount('article', $article['id']);
+            $article['url']      = $this->getArticleURL(null, $article['seolink']);
+			$article['cat_url']  = $this->getCategoryURL(null, $article['catseolink']);
+            if(isset($_SESSION['lang']) && $_SESSION['lang'] != 'ru') {
+				$article['image']    = (file_exists(PATH.'/images/photos/small/article'.$article['id'].'_'.$_SESSION['lang'].'.jpg') ? 'article'.$article['id'].'_'.$_SESSION['lang'].'.jpg' : '');
+			}
+			else{
+				$article['image']    = (file_exists(PATH.'/images/photos/small/article'.$article['id'].'.jpg') ? 'article'.$article['id'].'.jpg' : '');
+			}
             $articles[] = $article;
         }
 
@@ -320,16 +445,19 @@ class cms_model_content{
      * @return array
      */
     public function getArticle($id_or_link) {
-
+		
+		if(isset($_SESSION['not_found'])) unset($_SESSION['not_found']);
+		if(isset($_SESSION['lang_not_found'])) unset($_SESSION['lang_not_found']);
+		
 		if(is_numeric($id_or_link)){
-
+		
 			$where = "con.id = '$id_or_link'";
-
+		
 		} else {
-
+		
 			$where = "con.seolink = '$id_or_link'";
 		}
-
+		
 		$sql = "SELECT  con.*,
 						cat.title cat_title, cat.id cat_id, cat.NSLeft as leftkey, cat.NSRight as rightkey, cat.modgrp_id,
 						cat.showtags as showtags, cat.seolink as catseolink, cat.cost, u.nickname as author, u.login as user_login
@@ -337,15 +465,54 @@ class cms_model_content{
 				INNER JOIN cms_category cat ON cat.id = con.category_id
 				LEFT JOIN cms_users u ON u.id = con.user_id
 				WHERE {$where} LIMIT 1";
-
+		
 		$result = $this->inDB->query($sql);
-
+		
+		/*///////////// костыль для нахождения id статьи в других языках, если в текущем по $seolink статью не нашли /////////////  */
+		
+		if (!$this->inDB->num_rows($result)) {
+			$langs = cmsCore::getDirsList('/languages');
+			//unset($langs[0]);
+			foreach($langs as $lang){
+				if($lang == 'ru') { $prefix_mas[$lang] = "vds_"; }
+				else { $prefix_mas[$lang] = $lang . "_"; }
+			}
+			//unset($prefix_mas[$_SESSION['lang']]);
+			foreach($prefix_mas as $prefix){
+				$result = $this->inDB->query_new($sql, false, true, 'cms_', $prefix);
+				//echo "<pre>"; var_dump($sql);
+				//echo "<pre>"; var_dump($result);
+				//echo "<pre>"; var_dump($prefix);
+				if ($this->inDB->num_rows($result)) {
+					$article_info = $this->inDB->fetch_assoc($result);
+					$article_id = $article_info['id'];
+					
+					$where = "con.id = '$article_id'";
+					
+					$sql = "SELECT  con.*,
+									cat.title cat_title, cat.id cat_id, cat.NSLeft as leftkey, cat.NSRight as rightkey, cat.modgrp_id,
+									cat.showtags as showtags, cat.seolink as catseolink, cat.cost, u.nickname as author, u.login as user_login
+							FROM cms_content con
+							INNER JOIN cms_category cat ON cat.id = con.category_id
+							LEFT JOIN cms_users u ON u.id = con.user_id
+							WHERE {$where} LIMIT 1";
+					
+					$result = $this->inDB->query($sql);
+					break;
+				}
+			}
+			//echo "<pre>"; var_dump($prefix_mas); exit();
+			//echo "<pre>"; var_dump($result); 
+			//exit();
+		}
+		
+		/* ---- */
+		
         if (!$this->inDB->num_rows($result)) { return false; }
-
+		
         $article = $this->inDB->fetch_assoc($result);
-
         return $article;
-
+		
     }
 
 /* ==================================================================================================== */

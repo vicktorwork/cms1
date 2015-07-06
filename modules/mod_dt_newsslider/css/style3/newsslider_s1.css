@@ -2,7 +2,7 @@
 .style3.sb1.dt_newsslider{ 
 	width:100%; 
 	position:relative; 
-	min-height:300px;
+	min-height: 635px;
 }
 
 .style3.sb1.dt_newsslider .dt_newsslider_list{
@@ -12,6 +12,7 @@
 	width:50%;
 	z-index:2;
 	position:relative;
+	display: none;
 }
 
 .style3.sb1.dt_newsslider .dt_newsslider_list .dt_newsslider_list_item{ 
@@ -66,11 +67,11 @@
 }
 
 .style3.sb1.dt_newsslider .dt_newsslider_slide{ 
-	height:100%;
-	position:absolute;
-	bottom:0;
-	top:0;
-	width:100%;
+	height: 100%;
+	position: absolute;
+	bottom: 0;
+	top: -89px!important;
+	width: 100%!important;
 	overflow: hidden;
 }
 
@@ -82,47 +83,42 @@
 	border:0;
 	margin:0;
 	padding:0;
+	height: 100%!important;
+	width: 100%;
 }
 
 .style3.sb1.dt_newsslider .dt_newsslider_slide_info{ 
-	position:absolute; 
-	bottom:0px; 
-	width: 98%;
-	left:0; 
-	padding: 0px;
-	background: url('../../images/style3/b10.png') repeat top left;
-	border-radius: 4px;
+	position:absolute;
+	right: 125px;
+	top: 180px;
+	width: 545px;
+	padding: 0px 25px;
 }
 
 .style3.sb1.dt_newsslider .dt_newsslider_slide_title{ 
-	font-size:16px; 
-	padding:0; 
-	margin:0 10px;
-	overflow:hidden; 
-	color:#333;
-	word-wrap: break-word;
 	display: block;
+	background: rgba(0,0,0,0.8);
+	color: #e9d365;
+	text-transform: uppercase;
+	padding: 10px 100px;
+	text-align: center;
+	line-height: 29px;
+	font-size: 17px;
 }
 
-.style3.sb1.dt_newsslider .dt_newsslider_slide_desc{ 
-	margin:0 10px; 
-	padding: 0;
-	font-size:13px; 
-	line-height:15px; 
-	color:#666;
-	word-wrap: break-word;
+.style3.sb1.dt_newsslider .dt_newsslider_slide_desc{
+	text-align: justify;
+	line-height: 27px;
+	color: #fff;
 }
-
+.style3.sb1.dt_newsslider .dt_newsslider_slide_content {
+	background: rgba(0,0,0,0.5);
+	font-size: 18px;
+	padding: 10px 25px 50px;
+}
 .style3.sb1.dt_newsslider .dt_newsslider_slide_more{
-	background: url('../../images/style3/more1.png') no-repeat 0 7px;
-	text-decoration:none;
-	border-radius: 3px;
-	display: inline-block;
-	font-size: 14px;
-	color:#222;
-	margin: 10px;
-	height:20px;
-	padding-left:15px;
+	float: right;
+	color: #e9d365;
 }
 
 .style3.sb1.dt_newsslider .dt_newsslider_slide_more:hover{

@@ -1,11 +1,12 @@
 <?php 
 if(!defined('VALID_CMS')) { die('ACCESS DENIED'); } 
 $_CFG = array();
-$_CFG['sitename'] 	= 'CMS VADYUS';
+$_CFG['sitename'] 	= 'Добрынь - Изделия из гранита';
 $_CFG['title_and_sitename'] 	= 1;
 $_CFG['title_and_page'] 	= 1;
 $_CFG['hometitle'] 	= '';
 $_CFG['homecom'] 	= '';
+$_CFG['slogan'] 	= 'Изделия из гранита';
 $_CFG['siteoff'] 	= 0;
 $_CFG['debug'] 	= 0;
 $_CFG['offtext'] 	= 'Производится обновление сайта';
@@ -13,7 +14,7 @@ $_CFG['keywords'] 	= 'vadyus, система управления сайтом, 
 $_CFG['metadesc'] 	= 'vadyus - бесплатная система управления сайтом';
 $_CFG['seourl'] 	= 0;
 $_CFG['lang'] 	= 'ru';
-$_CFG['is_change_lang'] 	= 0;
+$_CFG['is_change_lang'] 	= 1;
 $_CFG['sitemail'] 	= '';
 $_CFG['sitemail_name'] 	= '';
 $_CFG['wmark'] 	= 'watermark.png';
@@ -26,7 +27,7 @@ $_CFG['db_user'] 	= 'root';
 $_CFG['db_pass'] 	= '';
 $_CFG['db_prefix'] 	= 'vds';
 $_CFG['show_pw'] 	= 1;
-$_CFG['last_item_pw'] 	= 1;
+$_CFG['last_item_pw'] 	= 2;
 $_CFG['index_pw'] 	= 0;
 $_CFG['fastcfg'] 	= 1;
 $_CFG['mailer'] 	= 'mail';
@@ -41,4 +42,9 @@ $_CFG['timediff'] 	= '';
 $_CFG['user_stats'] 	= 1;
 $_CFG['seo_url_count'] 	= 40;
 $_CFG['allow_ip'] 	= '';
+$_CFG['phone1'] 	= '+38 (067) 77 550 77';
+
+$_CFG['google'] 	= '#';
+$_CFG['facebook'] 	= '#';
+$_CFG['vk'] 	= '#';
 ?>

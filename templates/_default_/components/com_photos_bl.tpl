@@ -9,7 +9,7 @@
         <td align="center" valign="middle" width="{math equation="100/x" x=$maxcols}%">
             <div class="photo_thumb" align="center">
                 <a href="/photos/photo{$photo.id}.html" title="{$photo.title|escape:'html'}">
-                    <img class="photo_thumb_img" src="/images/photos/small/{$photo.file}" alt="{$photo.title|escape:'html'}" border="0" />
+                    <div class="image_wrapper"><img class="photo_thumb_img" src="/images/photos/small/{$photo.file}" alt="{$photo.title|escape:'html'}" border="0" /></div>
                 </a><br />
                 <a href="/photos/photo{$photo.id}.html" title="{$photo.title|escape:'html'}">{$photo.title|truncate:18}</a>
                 <div class="mod_lp_albumlink"><a href="/photos/{$photo.album_id}" title="{$photo.cat_title|escape:'html'}">{$photo.cat_title|truncate:18}</a>

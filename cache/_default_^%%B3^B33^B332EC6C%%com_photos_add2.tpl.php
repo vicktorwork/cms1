@@ -1,4 +1,4 @@
-<?php /* Smarty version 2.6.28, created on 2015-04-27 20:02:30
+<?php /* Smarty version 2.6.28, created on 2015-02-23 15:13:50
          compiled from com_photos_add2.tpl */ ?>
 <?php require_once(SMARTY_CORE_DIR . 'core.load_plugins.php');
 smarty_core_load_plugins(array('plugins' => array(array('function', 'add_js', 'com_photos_add2.tpl', 6, false),array('function', 'add_css', 'com_photos_add2.tpl', 10, false),)), $this); ?>
